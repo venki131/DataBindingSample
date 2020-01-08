@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.venkatesh.databindingsample.MainActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/deliciousketchup_bold"
+            android:text="@{viewmodel.currentRandomFruitName}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Random Fruit Name" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_generate_rand_fruit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/deliciousketchup_bold"
+            android:onClick="@{() -> viewmodel.generateRandomFruitOnClick()}"
+            android:text="Generate Random Fruit"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/deliciousketchup_bold"
+            android:hint="Enter a Fruit Name"
+            android:text="@={viewmodel.editTextContent}"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_generate_rand_fruit" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_display_et_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/deliciousketchup_bold"
+            android:onClick="@{() -> viewmodel.displayEditTextContentOnClick()}"
+            android:text="Display Edit text content"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_text" />
+
+        <TextView
+            android:id="@+id/txt_display_et_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/deliciousketchup_bold_italic"
+            android:gravity="center"
+            android:text="@{viewmodel.displayEditTextContent}"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_display_et_content"
+            tools:text="Apple" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/deliciousketchup_bold"
+            android:onClick="@{() -> viewmodel.onSelectRandomEditTextFruit()}"
+            android:text="Select Random Fruit for EditText"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/txt_display_et_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
